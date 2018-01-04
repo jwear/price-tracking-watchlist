@@ -16,7 +16,11 @@
   <body>
     <header>
       <div class="header_inner">
+        {% if user.is_authenticated %}
         <a id="logo" href="{% url 'watch:profile' %}">Watchman</a>
+        {% else %}
+        <a id="logo" href="{% url 'welcome' %}">Watchman</a>
+        {% endif %}
         <nav>
           <ul>
           {% if user.is_authenticated %}
@@ -34,9 +38,6 @@
   {% block content %}{% endblock %}
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
-  <script src="{% static 'js/site.js' %}"></script>
-  <script src="{% static 'js/chart.js' %}"></script>
   {% block scripts %}{% endblock %}
   </body>
 </html>

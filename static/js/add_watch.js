@@ -1,23 +1,23 @@
 $(document).ready(function() {
-  var $deleteWatch = $('#delete_watch');
+  var $addWatch = $('#add_watch');
 
-  $deleteWatch.on('click', function(event) {
+  $addWatch.on('click', function(event) {
 
     var csrftoken = $('[name=csrfmiddlewaretoken]').val();
     $.ajax({
       url: window.location.href,
-      method: 'DELETE',
+      method: 'POST',
       headers: {
         'X-CSRFToken': csrftoken
       }
     })
       .done(function() {
-        var $watchButton = $('<button/>', {
-          id: 'add_watch',
-          text: 'Watch'
-        })
-        $(event.target).before($watchButton);
-        $(event.target).remove();
+        var $deleteButton = $('<button/>', {
+        id: 'delete_watch',
+        text: 'Delete'
+      })
+        $(event.target).before($deleteButton);
+        $(event.target).add();
       })
       .fail(function(error) {
       });

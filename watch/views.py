@@ -48,22 +48,16 @@ class WelcomePageView(View):
 
 @method_decorator(login_required, name='dispatch')
 class ProfilePageView(View):
-    template_name = 'watch/profile.html'
-
-    def get(self, request):
-        watches = request.user.watch_set.all()
-
-        return render(request, self.template_name, {'watches': watches})
-
-@method_decorator(login_required, name='dispatch')
-class WatchCreateView(View):
     form_class = WatchForm
-    template_name = 'watch/create.html'
+    template_name = 'watch/profile.html'
 
     def get(self, request, *args, **kwargs):
         form = self.form_class()
-        return render(request, self.template_name, {'form': form})
+        watches = request.user.watch_set.all()
 
+        return render(request, self.template_name, {'watches': watches, 'form': form})
+
+class WatchCreateView(View):
     def post(self, request, *args, **kwargs):
         url = request.POST['url']
         item_id = parse_url(url)
@@ -97,7 +91,8 @@ class WatchDetailView(View):
                 )
                 Price.objects.create(product=product, price=product_data['ConvertedCurrentPrice']['value'],)
 
-        return render(request, self.template_name, {'product': product, 'is_watched': request.user.watch_set.filter(pk=self.kwargs['item_id']).exists()},)
+        is_watched = request.user.watch_set.filter(pk=self.kwargs['item_id']).exists() if request.user.is_authenticated else False
+        return render(request, self.template_name, {'product': product, 'is_watched': is_watched},)
 
     @method_decorator(login_required, name='dispatch')
     def post(self, request, *args, **kwargs):
