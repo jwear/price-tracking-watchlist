@@ -1,0 +1,12 @@
+{% extends 'layout.html' %}
+
+{% block title %}Watchman | Profile{% endblock %}
+{% block content %}
+  <div class="wrapper_with_padding">
+  {% for watch in watches %}
+    <h3><a href="{% url 'watch:detail' item_id=watch.item_id %}">{{ watch.title }}</a></h3>
+  {% empty %}
+    <p>You have no watchlist.</p>
+  {% endfor %}
+  </div>
+{% endblock %}

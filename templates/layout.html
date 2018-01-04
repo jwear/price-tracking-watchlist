@@ -1,0 +1,42 @@
+{% load compress %}
+{% load static %}
+{% csrf_token %}
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+      {% compress css %}
+        <link rel="stylesheet" type="text/x-scss" href="{% static "css/site.scss" %}" />
+        <link rel="stylesheet" type="text/x-scss" href="{% static "css/welcome.scss" %}" />
+      {% endcompress %}
+    {% block stylesheets %}{% endblock %}
+  </head>
+  <body>
+    <header>
+      <div class="header_inner">
+        <a id="logo" href="{% url 'watch:profile' %}">Watchman</a>
+        <nav>
+          <ul>
+          {% if user.is_authenticated %}
+          <li>Hi, {{ user.username }}!</li>
+          <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+          {% else %}
+          <li><a href="{% url 'accounts:login' %}">Log In</a></li>
+          {% endif %}
+        </ul>
+        </nav>
+      </div>
+    </header>
+  <p class='notice'></p>
+  <p class='alert'></p>
+  {% block content %}{% endblock %}
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.js"></script>
+  <script src="{% static 'js/site.js' %}"></script>
+  <script src="{% static 'js/chart.js' %}"></script>
+  {% block scripts %}{% endblock %}
+  </body>
+</html>

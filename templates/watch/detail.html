@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Watchman | Item Detail{% endblock %}
+
+{% block content %}
+
+<div class="product_container">
+<div id="product" data-item-id='{{ product.item_id }}' class="wrapper_with_padding">
+  <h3>{{ product.title }}</h3>
+  <p>${{ product.prices.all.last.price|floatformat:2 }}</p>
+  {% if is_watched %}
+  <button id="delete_watch">Delete</button>
+  {% else %}
+  <button id="add_watch">Watch</button>
+  {% endif %}
+  <br />
+  <img class="product_image" src="{{ product.image_url }}" />
+</div>
+<div class="chart-container">
+  <canvas id="myChart"></canvas>
+</div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+  <script src="{% static 'js/delete_watch.js' %}"></script>
+{% endblock %}

@@ -1,0 +1,36 @@
+{% extends "layout.html" %}
+{% load static %}
+
+{% block title %}Watchman{% endblock %}
+
+{% block content %}
+  <div id="banner">
+    <div class="banner_content">
+      <h1>Watchman</h1>
+      <p>Your Amazon and Ebay Watchlist</p>
+        <form method="POST" action="{% url 'watch:create' %}">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <button>Try It</button>
+        </form>
+    </div>
+  </div>
+  <div id="callouts" style="background-image: url('{% static "images/callout_background.jpg" %}')";>
+    <div class="callout_inner">
+      <div class="wrapper">
+        <div class="callout">
+          <h2>Track Prices</h2>
+          <p>With this app, you can track prices that you are watching from Amazon
+            or Ebay in one stop.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div id="bottom_cta">
+    <div class="wrapper">
+      <h2>Set up your watchlist now!</h2>
+      <br />
+      <a href="{% url 'accounts:register' %}"><button>Free Sign Up</button></a>
+    </div>
+  </div>
+{% endblock %}

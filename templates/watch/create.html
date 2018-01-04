@@ -1,0 +1,14 @@
+{% extends "layout.html" %}
+
+{% block title %}Watch Items{% endblock %}
+
+{% block content %}
+<div class="wrapper_with_padding">
+<p>Please add the url of an Amazon or Ebay item to watch.</p>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button>Watch Item</button>
+  </form>
+</div>
+{% endblock %}
