@@ -17,4 +17,6 @@ def watch_task():
 
 @task
 def email_task():
+    # for price in Price.objects.all():
+    #     if price.objects.all().last()
     pass
