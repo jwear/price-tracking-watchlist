@@ -17,7 +17,7 @@ $(document).ready(function() {
         text: 'Delete'
       })
         $(event.target).before($deleteButton);
-        $(event.target).add();
+        $(event.target).remove();
       })
       .fail(function(error) {
       });

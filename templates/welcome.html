@@ -11,7 +11,7 @@
         <form method="POST" action="{% url 'watch:create' %}">
           {% csrf_token %}
           {{ form.as_p }}
-          <button>Try It</button>
+          <button class="button">Try It</button>
         </form>
     </div>
   </div>
@@ -30,7 +30,7 @@
     <div class="wrapper">
       <h2>Set up your watchlist now!</h2>
       <br />
-      <a href="{% url 'accounts:register' %}"><button>Free Sign Up</button></a>
+      <a href="{% url 'accounts:register' %}"><button class="button">Free Sign Up</button></a>
     </div>
   </div>
 {% endblock %}

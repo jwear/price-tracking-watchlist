@@ -77,22 +77,24 @@ class WatchDetailView(View):
                 product = Watch.objects.create(
                     pk=self.kwargs['item_id'],
                     title=product_data.title,
+                    url=product_data.detail_page_url,
                     service=Watch.AMAZON,
                     image_url=product_data.medium_image_url,
                 )
-                Price.objects.create(product=product, price=product_data.price_and_currency[0],)
+                Price.objects.create(product=product, price=product_data.price_and_currency[0])
             elif request.GET.get('service') == Watch.EBAY:
                 product_data = get_product_from_ebay(self.kwargs['item_id'])
                 product = Watch.objects.create(
                     pk=self.kwargs['item_id'],
                     title=product_data['Title'],
+                    url=product_data['ViewItemURLForNaturalSearch'],
                     service=Watch.EBAY,
                     image_url=product_data['PictureURL'][0],
                 )
-                Price.objects.create(product=product, price=product_data['ConvertedCurrentPrice']['value'],)
+                Price.objects.create(product=product, price=product_data['ConvertedCurrentPrice']['value'])
 
         is_watched = request.user.watch_set.filter(pk=self.kwargs['item_id']).exists() if request.user.is_authenticated else False
-        return render(request, self.template_name, {'product': product, 'is_watched': is_watched},)
+        return render(request, self.template_name, {'product': product, 'is_watched': is_watched})
 
     @method_decorator(login_required, name='dispatch')
     def post(self, request, *args, **kwargs):

@@ -14,3 +14,7 @@ def watch_task():
         elif watch.service == Watch.EBAY:
             product_data = get_product_from_ebay(watch.item_id)
             Price.objects.create(product=watch, price=product_data['ConvertedCurrentPrice']['value'],)
+
+@task
+def email_task():
+    pass

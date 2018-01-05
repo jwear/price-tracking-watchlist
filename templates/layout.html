@@ -24,7 +24,7 @@
         <nav>
           <ul>
           {% if user.is_authenticated %}
-          <li>Hi, {{ user.username }}!</li>
+          <li class="username_color">Hi, {{ user.username }}!</li>
           <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
           {% else %}
           <li><a href="{% url 'accounts:login' %}">Log In</a></li>

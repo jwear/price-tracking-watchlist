@@ -158,6 +158,10 @@ CELERY_BEAT_SCHEDULE = {
     'watch-task-every-4-hours': {
         'task': 'watch.tasks.watch_task',
         'schedule': crontab(minute=0, hour='*/4')
+    },
+    'email-task-every-4-hours': {
+        'task': 'watch.tasks.email_task',
+        'schedule': crontab(minute=0, hour='*/4')
     }
 }
 
