@@ -17,7 +17,7 @@ class Watch(models.Model):
         choices=SERVICE_CHOICES,
     )
 
-    user = models.ManyToManyField('auth.User')
+    users = models.ManyToManyField('auth.User')
 
 class Price(models.Model):
     price = models.FloatField()

@@ -30,7 +30,7 @@ INSTALLED_APPS = [
     'django_celery_results',
     'watch',
     'accounts',
-    "compressor",
+    'compressor',
 ]
 
 MIDDLEWARE = [
@@ -42,6 +42,13 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
+
+# Email Setup
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_FILE_PATH = os.path.join(BASE_DIR, 'tmp')
+EMAIL_HOST = 'localhost'
+EMAIL_PORT = 1025
 
 ROOT_URLCONF = 'watchman.urls'
 
@@ -156,14 +163,16 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
 CELERY_BEAT_SCHEDULE = {
-    'watch-task-every-4-hours': {
-        'task': 'watch.tasks.watch_task',
-        'schedule': crontab(minute=0, hour='*/4')
-    },
+    # 'watch-task-every-4-hours': {
+    #     'task': 'watch.tasks.watch_task',
+    #     # 'schedule': crontab(minute=0, hour='*/4')
+    #     'schedule': 30.0,
+    # },
     'email-task-every-4-hours': {
         'task': 'watch.tasks.email_task',
-        'schedule': crontab(minute=0, hour='*/4')
-    }
+        # 'schedule': crontab(minute=0, hour='*/4')
+        'schedule': 30.0,
+    },
 }
 
 # Media path
