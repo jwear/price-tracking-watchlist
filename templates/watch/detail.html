@@ -5,23 +5,23 @@
 
 {% block content %}
 
-<div class="product_container">
-<div id="product" data-item-id='{{ product.item_id }}' class="wrapper_with_padding">
+<div id="product_container">
+<div id="product" data-item-id='{{ product.item_id }}' class="container">
   <h3>{{ product.title }}</h3>
   <p>${{ product.prices.all.last.price|floatformat:2 }}</p>
   {% if request.user.is_authenticated %}
     {% if is_watched %}
-    <button class="button" id="delete_watch">Delete</button>
+    <button id="delete_watch">Delete</button>
     {% else %}
-    <button class="button" id="add_watch">Watch</button>
+    <button id="add_watch">Watch</button>
     {% endif %}
   {% else %}
-    <a href="{% url 'accounts:register' %}"><button class="button">Sign up to watch</button></a>
+    <a href="{% url 'accounts:register' %}?next={% url 'watch:detail' item_id=product.item_id %}"><button>Sign up to watch</button></a>
   {% endif %}
   <br />
-  <img class="product_image" src="{{ product.image_url }}" />
+  <img id="product_image" src="{{ product.image_url }}" />
 </div>
-<div class="chart-container">
+<div id="chart_container">
   <canvas id="myChart"></canvas>
 </div>
 </div>

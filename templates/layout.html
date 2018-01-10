@@ -15,7 +15,7 @@
   </head>
   <body>
     <header>
-      <div class="header_inner">
+      <div id="header_inner">
         {% if user.is_authenticated %}
         <a id="logo" href="{% url 'watch:profile' %}">Watchman</a>
         {% else %}
@@ -24,7 +24,7 @@
         <nav>
           <ul>
           {% if user.is_authenticated %}
-          <li class="username_color">Hi, {{ user.username }}!</li>
+          <li>Hi, {{ user.username }}!</li>
           <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
           {% else %}
           <li><a href="{% url 'accounts:login' %}">Log In</a></li>
@@ -38,6 +38,7 @@
   {% block content %}{% endblock %}
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="{% static 'js/site.js' %}"></script>
   {% block scripts %}{% endblock %}
   </body>
 </html>

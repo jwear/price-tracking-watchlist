@@ -11,7 +11,7 @@ class Watch(models.Model):
     url = models.URLField()
     item_id = models.CharField(max_length=256, primary_key=True)
     title = models.CharField(max_length=512)
-    image_url = models.URLField()
+    image_url = models.URLField(blank=True, null=True)
     service = models.CharField(
         max_length=3,
         choices=SERVICE_CHOICES,

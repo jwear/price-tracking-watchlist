@@ -3,11 +3,11 @@
 {% block title %}Register{% endblock %}
 
 {% block content %}
-<div class="wrapper_with_padding">
+<div class="container">
 <form method="POST">
   {% csrf_token %}
   {{ form.as_p }}
-  <button class="button">Register</button>
+  <button>Register</button>
 </form>
 </div>
 {% endblock %}

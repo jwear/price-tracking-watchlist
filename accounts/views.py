@@ -1,4 +1,5 @@
 from django.shortcuts import render, redirect
+from django.http import HttpResponseRedirect
 from django.contrib.auth import views as auth
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.models import User
@@ -31,6 +32,10 @@ class AccountRegisterView(View):
                     password=form.cleaned_data['password1'],
             )
             login(request, user)
-            return redirect('watch:profile')
+            next = request.GET.get('next')
+            if next:
+                return HttpResponseRedirect(next)
+            else:
+                return redirect('watch:profile')
         else:
             return render (request, self.template_name, {'form': form})

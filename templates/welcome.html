@@ -8,10 +8,10 @@
     <div class="banner_content">
       <h1>Watchman</h1>
       <p>Your Amazon and Ebay Watchlist</p>
-        <form method="POST" action="{% url 'watch:create' %}">
+        <form id="exception" method="POST" action="{% url 'watch:create' %}">
           {% csrf_token %}
           {{ form.as_p }}
-          <button class="button">Try It</button>
+          <button>Try It</button>
         </form>
     </div>
   </div>
@@ -30,7 +30,7 @@
     <div class="wrapper">
       <h2>Set up your watchlist now!</h2>
       <br />
-      <a href="{% url 'accounts:register' %}"><button class="button">Free Sign Up</button></a>
+      <a href="{% url 'accounts:register' %}"><button>Free Sign Up</button></a>
     </div>
   </div>
 {% endblock %}

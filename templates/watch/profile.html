@@ -2,11 +2,11 @@
 
 {% block title %}Watchman | Profile{% endblock %}
 {% block content %}
-  <div class="wrapper_with_padding">
-    <form method="POST" action="{% url 'watch:create' %}">
+  <div class="container">
+    <form id="exception" method="POST" action="{% url 'watch:create' %}">
       {% csrf_token %}
       {{ form.as_p }}
-      <button class="button">Look Up Item</button>
+      <button>Look Up Item</button>
     </form>
   {% for watch in watches %}
     <h3><a href="{% url 'watch:detail' item_id=watch.item_id %}">{{ watch.title }}</a></h3>

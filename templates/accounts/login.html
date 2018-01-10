@@ -3,11 +3,11 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="wrapper_with_padding">
+<div class="container">
 <form method="POST">
   {% csrf_token %}
   {{ form.as_p }}
-  <div><button class="button">Log In</button></div>
+  <div><button>Log In</button></div>
   <div><a href="{% url 'accounts:register' %}">Sign Up</a></div>
 </form>
 </div>
