@@ -163,9 +163,9 @@ CELERY_RESULT_SERIALIZER = 'json'
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_TIMEZONE = TIME_ZONE
 CELERY_BEAT_SCHEDULE = {
-    'watchman-batch-every-minute': {
+    'watchman-batch-every-30-seconds': {
         'task': 'watch.tasks.watchman_batch_task',
-        'schedule': crontab(),
+        'schedule': 30.0,
     },
 }
 

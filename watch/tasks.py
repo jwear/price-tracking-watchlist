@@ -9,16 +9,17 @@ from .models import Watch, Price
 from .views import get_product_from_ebay, get_product_from_amazon
 
 
-@task(ignore_result=True)
+@task
 def watch_task():
-    random_number = random.randint(-5, 5)
+    random_number = random.randint(-2, 2)
     for watch in Watch.objects.all():
         if watch.service == Watch.AMAZON:
             product_data = get_product_from_amazon(watch.item_id)
             Price.objects.create(product=watch, price=product_data.price_and_currency[0] + random_number)
         elif watch.service == Watch.EBAY:
             product_data = get_product_from_ebay(watch.item_id)
-            Price.objects.create(product=watch, price=product_data['ConvertedCurrentPrice']['value'] + random_number)
+            price = float(product_data['ConvertedCurrentPrice']['value']) + random_number
+            Price.objects.create(product=watch, price=price)
 
 @task(ignore_result=True)
 def email_task():
