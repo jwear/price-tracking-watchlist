@@ -5,3 +5,4 @@ ebay.yaml
 CACHE
 .DS_Store
 keys.py
+tmp
