@@ -16,7 +16,7 @@ $green: #529ECC;
 }
 
 body {
-	padding-top: 4.5rem;
+	padding-top: 3.0rem;
 	font-family: 'Dosis', sans-serif;
 }
 
@@ -34,17 +34,8 @@ body {
 	clear: both;
 }
 
-header ul {
-  list-style: none;
-  margin: 0px;
-  padding: 0px;
-  font-size: 1.1rem;
-  line-height: 2.5;
-  display: flex;
-}
-
 .container {
-	width: 80%;
+	width: 60%;
 	margin: 0 auto;
 	padding: 0.5rem 0
 }
@@ -72,7 +63,7 @@ button {
 	border: none;
 	outline: none;
 	background: $green;
-	padding: 1rem 3.5rem;
+	padding: 1rem 2.5rem;
 	border-radius: 0.1rem;
 	a {
 		color: white;
@@ -101,7 +92,7 @@ header {
 	position: absolute;
 	top: 0;
 	width: 100%;
-	padding: 1.00rem 0;
+	padding: 0.75rem 0;
 	border-bottom: 1.5px solid #376490;
 	#header_inner {
 		width: 90%;
@@ -118,7 +109,6 @@ header {
 		nav {
 			float: right;
 			a {
-				text-decoration: underline;
 				color: white;
 				font-size: 1.1rem;
 				line-height: 2.5;
@@ -129,6 +119,15 @@ header {
 			}
 		}
 	}
+}
+
+nav ul {
+  list-style: none;
+  margin: 0px;
+  padding: 0px;
+  font-size: 1.1rem;
+  line-height: 2.5;
+  display: flex;
 }
 
 // NOTICE STYLING
