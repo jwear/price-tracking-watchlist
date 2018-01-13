@@ -1,4 +1,5 @@
 from django.db import models
+from django.db.models import Max, Min
 
 class Watch(models.Model):
     AMAZON = 'amz'
@@ -18,6 +19,14 @@ class Watch(models.Model):
     )
 
     users = models.ManyToManyField('auth.User')
+
+    @property
+    def lowest_price(self):
+        return self.prices.aggregate(Min('price'))['price__min']
+
+    @property
+    def highest_price(self):
+        return self.prices.aggregate(Max('price'))['price__max']
 
 class Price(models.Model):
     price = models.FloatField()

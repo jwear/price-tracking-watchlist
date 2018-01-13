@@ -2,16 +2,48 @@
 
 {% block title %}Watchman | Profile{% endblock %}
 {% block content %}
-  <div class="container">
+  <div id="profile-container">
     <form id="exception" method="POST" action="{% url 'watch:create' %}">
       {% csrf_token %}
       {{ form.as_p }}
       <button>Look Up Item</button>
     </form>
+  <br />
+  <hr />
+  <table>
+    <col width='900'>
+    <col width='100'>
+    <col width='100'>
+    <col width='100'>
+    <tr>
+      <td><h3>Item</h3></td>
+      <td><h3>Low</h3></td>
+      <td><h3>High</h3></td>
+      <td><h3>Last</h3></td>
+    </tr>
+  </table>
   {% for watch in watches %}
-    <h3><a href="{% url 'watch:detail' item_id=watch.item_id %}">{{ watch.title }}</a></h3>
+  <table>
+    <col width='900'>
+    <col width='100'>
+    <col width='100'>
+    <col width='100'>
+    <tr>
+      <td>
+        <h3><a href="{% url 'watch:detail' item_id=watch.item_id %}">{{ watch.title }}</a></h3>
+      </td>
+      <td>
+        <h3>${{ watch.lowest_price }}</h3>
+      <td>
+        <h3>${{ watch.highest_price }}</h3>
+      </td>
+      <td>
+        <h3>${{ watch.prices.all.last.price|floatformat:2 }}</h3>
+      </td>
+    </tr>
+  </table>
   {% empty %}
-    <p>You have no watchlist.</p>
+  <p>You have no watchlist.</p>
   {% endfor %}
   </div>
 {% endblock %}

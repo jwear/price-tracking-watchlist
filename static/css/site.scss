@@ -40,11 +40,27 @@ body {
 	padding: 0.5rem 0
 }
 
+// PROFILE product_image
+
+#profile-container {
+	width: 80%;
+	margin: 0 auto;
+	padding: 0.5rem 0
+}
+
 // DETAIL PAGE
 
 #product_container {
+  width: 95%;
   display: grid;
-  grid-template-columns: 1fr 2fr;
+  grid-template-columns: 2fr 1fr;
+  p {
+    color: red;
+  }
+}
+
+#buy_button {
+
 }
 
 #chart_container {
@@ -63,7 +79,7 @@ button {
 	border: none;
 	outline: none;
 	background: $green;
-	padding: 1rem 2.5rem;
+	padding: 1rem 1.5rem;
 	border-radius: 0.1rem;
 	a {
 		color: white;

@@ -62,7 +62,6 @@ class ProfilePageView(View):
     def get(self, request, *args, **kwargs):
         form = self.form_class()
         watches = request.user.watch_set.all()
-
         return render(request, self.template_name, {'watches': watches, 'form': form})
 
 class WatchCreateView(View):
