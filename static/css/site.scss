@@ -40,12 +40,30 @@ body {
 	padding: 0.5rem 0
 }
 
+// LOGIN PAGE
+
+#container_login {
+  width: 60%;
+  min-height: 87%;
+  margin: 0 auto;
+  padding: 0.5rem 0
+}
+
 // PROFILE product_image
 
-#profile-container {
+#profile_container {
 	width: 80%;
 	margin: 0 auto;
-	padding: 0.5rem 0
+  min-height: 87%;
+	padding: 0.5rem 0;
+}
+
+#low_color {
+  color: green;
+}
+
+#last_color {
+  color: red;
 }
 
 // DETAIL PAGE
@@ -53,14 +71,16 @@ body {
 #product_container {
   width: 95%;
   display: grid;
+  min-height: 87%;
   grid-template-columns: 2fr 1fr;
   p {
     color: red;
   }
 }
 
-#buy_button {
-
+.inline {
+  list-style: none;
+  display: inline;
 }
 
 #chart_container {
@@ -156,15 +176,13 @@ p.notice, p.alert {
 // FOOTER STYLING (OPTIONAL)
 
 footer {
-	background: #529ECC;
+	background: $light_gray;
 	width: 100%;
-	padding: 2rem 0;
-	color: white;
+	padding: 0.25rem 0;
 	text-align: center;
-	@include bold_font;
 	p {
 		margin: 0;
-		font-size: .65rem;
+		font-size: 0.65rem;
 	}
 }
 

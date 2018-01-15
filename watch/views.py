@@ -23,6 +23,10 @@ def parse_url(url):
             items = urlparse(url).path.split('/')
             item_id = items[-1]
             return (Watch.AMAZON, item_id)
+        if 'amazon' and '?pf' in url:
+            items = urlparse(url).path.split('/')
+            item_id = items[-1]
+            return (Watch.AMAZON, item_id)
         elif 'amazon' in url:
             items = url.split('/')
             for i, v in enumerate(items):

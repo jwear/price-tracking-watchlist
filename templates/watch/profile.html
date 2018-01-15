@@ -2,7 +2,7 @@
 
 {% block title %}Watchman | Profile{% endblock %}
 {% block content %}
-  <div id="profile-container">
+  <div id="profile_container">
     <form id="exception" method="POST" action="{% url 'watch:create' %}">
       {% csrf_token %}
       {{ form.as_p }}
@@ -33,12 +33,12 @@
         <h3><a href="{% url 'watch:detail' item_id=watch.item_id %}">{{ watch.title }}</a></h3>
       </td>
       <td>
-        <h3>${{ watch.lowest_price }}</h3>
+        <h3 id='low_color'>${{ watch.lowest_price }}</h3>
       <td>
         <h3>${{ watch.highest_price }}</h3>
       </td>
       <td>
-        <h3>${{ watch.prices.all.last.price|floatformat:2 }}</h3>
+        <h3 id='last_color'>${{ watch.prices.all.last.price|floatformat:2 }}</h3>
       </td>
     </tr>
   </table>

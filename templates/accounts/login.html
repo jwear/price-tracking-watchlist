@@ -3,7 +3,7 @@
 {% block title %}Login{% endblock %}
 
 {% block content %}
-<div class="container">
+<div id="container_login">
 <form method="POST">
   {% csrf_token %}
   {{ form.as_p }}

@@ -6,21 +6,21 @@
 {% block content %}
 
 <div id="product_container">
-<div id="product" data-item-id='{{ product.item_id }}' class='container'>
+<div id="product" data-item-id="{{ product.item_id }}" class="container">
   <h3>{{ product.title }}</h3>
   <p><strong>Price: ${{ product.prices.all.last.price|floatformat:2 }}</strong></p>
   {% if request.user.is_authenticated %}
     {% if is_watched %}
-    <button id="delete_watch">Delete</button>
-    <br />
+    <ul>
+      <li class="inline"><button id="delete_watch">Delete</button></li>
     {% else %}
-    <button id="add_watch">Watch</button>
-    <br />
+      <li class="inline"><button id="add_watch">Watch</button></li>
     {% endif %}
+      <li class="inline"><a href="{{ product.url }}" target="-blank"><button>Buy</button></a></li>
+    </ul>
   {% else %}
     <a href="{% url 'accounts:register' %}?next={% url 'watch:detail' item_id=product.item_id %}"><button>Sign up to watch</button></a>
   {% endif %}
-    <a href="{{ product.url }}" target="-blank"><button id='buy_button'>Buy</button></a>
   <br />
   <img id="product_image" src="{{ product.image_url }}" />
 </div>

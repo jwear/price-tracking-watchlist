@@ -16,28 +16,30 @@
   <body>
     <header>
       <div id="header_inner">
-        {% if user.is_authenticated %}
-        <a id="logo" href="{% url 'watch:profile' %}">Watchman</a>
-        {% else %}
-        <a id="logo" href="{% url 'welcome' %}">Watchman</a>
-        {% endif %}
-        <nav>
-          <ul>
           {% if user.is_authenticated %}
-          <li>Hi, {{ user.username }}!</li>
-          <li><a href="{% url 'watch:profile' %}">My Watchlist</a></li>
-          <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+          <a id="logo" href="{% url 'watch:profile' %}">Watchman</a>
           {% else %}
-          <li><a href="{% url 'accounts:login' %}">Log In</a></li>
+          <a id="logo" href="{% url 'welcome' %}">Watchman</a>
           {% endif %}
-        </ul>
-        </nav>
+          <nav>
+            <ul>
+              {% if user.is_authenticated %}
+              <li>Hi, {{ user.username }}!</li>
+              <li><a href="{% url 'watch:profile' %}">My Watchlist</a></li>
+              <li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+              {% else %}
+              <li><a href="{% url 'accounts:login' %}">Log In</a></li>
+              {% endif %}
+            </ul>
+          </nav>
       </div>
-    </header>
+  </header>
   <p class='notice'></p>
   <p class='alert'></p>
   {% block content %}{% endblock %}
-
+  <footer>
+    <p>&#169; 2018 Watchman</p>
+  </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="{% static 'js/site.js' %}"></script>
   {% block scripts %}{% endblock %}
