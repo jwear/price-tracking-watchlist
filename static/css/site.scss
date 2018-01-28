@@ -44,7 +44,6 @@ body {
 
 #container_login {
   width: 60%;
-  min-height: 87%;
   margin: 0 auto;
   padding: 0.5rem 0
 }
@@ -54,7 +53,6 @@ body {
 #profile_container {
 	width: 80%;
 	margin: 0 auto;
-  min-height: 87%;
 	padding: 0.5rem 0;
 }
 
@@ -71,7 +69,6 @@ body {
 #product_container {
   width: 95%;
   display: grid;
-  min-height: 87%;
   grid-template-columns: 2fr 1fr;
   p {
     color: red;
@@ -178,6 +175,7 @@ p.notice, p.alert {
 footer {
 	background: $light_gray;
 	width: 100%;
+  min-height: 100%;
 	padding: 0.25rem 0;
 	text-align: center;
 	p {

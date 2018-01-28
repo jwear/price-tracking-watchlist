@@ -1,12 +1,12 @@
 {% extends "layout.html" %}
 {% load static %}
 
-{% block title %}Watchman{% endblock %}
+{% block title %}Watchlist{% endblock %}
 
 {% block content %}
   <div id="banner">
     <div class="banner_content">
-      <h1>Watchman</h1>
+      <h1>Watchlist</h1>
       <p>Your Amazon and Ebay Watchlist</p>
         <form id="exception" method="POST" action="{% url 'watch:create' %}">
           {% csrf_token %}

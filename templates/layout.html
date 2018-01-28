@@ -16,11 +16,11 @@
   <body>
     <header>
       <div id="header_inner">
-          {% if user.is_authenticated %}
-          <a id="logo" href="{% url 'watch:profile' %}">Watchman</a>
-          {% else %}
-          <a id="logo" href="{% url 'welcome' %}">Watchman</a>
-          {% endif %}
+        {% if user.is_authenticated %}
+        <a id="logo" href="{% url 'watch:profile' %}">Watchlist</a>
+        {% else %}
+        <a id="logo" href="{% url 'welcome' %}">Watchlist</a>
+        {% endif %}
           <nav>
             <ul>
               {% if user.is_authenticated %}
@@ -37,9 +37,6 @@
   <p class='notice'></p>
   <p class='alert'></p>
   {% block content %}{% endblock %}
-  <footer>
-    <p>&#169; 2018 Watchman</p>
-  </footer>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="{% static 'js/site.js' %}"></script>
   {% block scripts %}{% endblock %}
