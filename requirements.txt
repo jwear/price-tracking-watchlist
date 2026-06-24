@@ -17,7 +17,7 @@ django-model-utils==3.0.0
 django-sass-processor==0.5.7
 ebaysdk==2.1.5
 ephem==3.7.6.0
-idna==2.6
+idna==3.15
 kombu==4.1.0
 libsass==0.13.4
 lxml==4.1.1
