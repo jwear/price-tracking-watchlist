@@ -26,7 +26,7 @@ python-dateutil==2.6.1
 pytz==2017.3
 rcssmin==1.0.6
 redis==2.10.6
-requests==2.18.4
+requests==2.33.0
 rjsmin==1.0.12
 selenium==3.8.1
 six==1.11.0
